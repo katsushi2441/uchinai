@@ -1,0 +1,3 @@
+# heteml の新規サブドメインは既定が PHP 5.6 のため明示する
+AddHandler php8.3-script .php
+DirectoryIndex index.html index.php

@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UCHINAI｜システム開発内製化 支援サービス — 株式会社L.Zone</title>
+<meta name="description" content="UCHINAIは、株式会社L.Zoneが提供するシステム開発の内製化支援サービスです。設計書をもとに動くプロトタイプを短期間で構築し、デモで確かめてから発注できます。ソースコードはお客様の資産として納品するため、以降は社内で育てていけます。GitHub受け渡しのみ100,000円（税別）／レンタルサーバーへの設置・設定込み200,000円（税別）。">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://uchinai.exbridge.jp/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="UCHINAI — 株式会社L.Zone">
+<meta property="og:title" content="UCHINAI｜システム開発内製化 支援サービス — 株式会社L.Zone">
+<meta property="og:description" content="設計書から動くプロトタイプを短期間で。デモで確かめてから発注、ソースコードはお客様の資産として納品します。">
+<meta property="og:url" content="https://uchinai.exbridge.jp/">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Service",
+  "name":"UCHINAI システム開発内製化 支援サービス",
+  "serviceType":"プロトタイプ受託開発・内製化支援",
+  "url":"https://uchinai.exbridge.jp/",
+  "provider":{"@type":"Organization","name":"株式会社L.Zone","url":"https://www.l-zone.net/"},
+  "areaServed":"JP",
+  "description":"設計書をもとにプロトタイプを実装し、デモ環境で試用したうえでソースコードをお客様へ納品する、システム開発の内製化支援サービス。",
+  "offers":[
+    {"@type":"Offer","price":"100000","priceCurrency":"JPY","name":"スタンドアロン版（GitHubでの受け渡しのみ）"},
+    {"@type":"Offer","price":"200000","priceCurrency":"JPY","name":"設置・設定込み（レンタルサーバーへ導入）"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"自分で書いた設計書でも依頼できますか？","acceptedAnswer":{"@type":"Answer","text":"はい。画面・データ・処理の流れが読み取れる記述レベルであれば承ります。判断がつかない場合は、まず設計書をお送りください。"}},
+    {"@type":"Question","name":"料金はいくらですか？","acceptedAnswer":{"@type":"Answer","text":"GitHubでの受け渡しのみのスタンドアロン版が100,000円（税別）、レンタルサーバーへの設置・初期設定まで含む場合が200,000円（税別）です。デモをご確認いただき、ご納得のうえで発注いただきます。"}},
+    {"@type":"Question","name":"どのくらいで出来上がりますか？","acceptedAnswer":{"@type":"Answer","text":"最短1営業日以内にデモをご確認いただけます。繁忙期や長期休暇でなければ1週間以内にご提示します。要件と設計書の記述レベルによって変わります。"}},
+    {"@type":"Question","name":"納品物は何ですか？","acceptedAnswer":{"@type":"Answer","text":"プロトタイプのソースコード一式を、お客様のGitHubリポジトリへ納品します。以降はお客様の資産として自由にお使いいただけます。"}},
+    {"@type":"Question","name":"そのまま本番で使えますか？","acceptedAnswer":{"@type":"Answer","text":"プロトタイプとしてお渡しするものであり、本番運用に向けた性能・セキュリティの作り込みは含みません。本番化のご相談は別途承ります。"}}
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+/* 配色は l-zone.net から継承（濃紺 #1b1b51 が主色） */
+:root{
+  --navy:#1b1b51; --navy-soft:#33336b; --ink:#333333; --muted:#7f7b75; --line:#dcdddf;
+  --paper:#ffffff; --wash:#f1f1f2; --wash2:#f6f6f6; --sand:#a5a29d; --accent:#c0392b;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{color:var(--ink);background:var(--paper);line-height:1.95;
+  font-family:"Noto Sans JP","Hiragino Sans","Yu Gothic",Meiryo,sans-serif;font-size:15px}
+a{color:var(--navy);text-decoration:none}
+a:hover{text-decoration:underline}
+img{max-width:100%}
+.wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+
+/* ヘッダー */
+header.site{background:var(--navy);color:#fff;position:sticky;top:0;z-index:20}
+header.site .wrap{display:flex;align-items:center;gap:16px;padding:14px 22px;flex-wrap:wrap}
+.brand{color:#fff;display:flex;align-items:baseline;gap:10px}
+.brand:hover{text-decoration:none}
+.brand b{font-size:23px;font-weight:900;letter-spacing:.14em}
+.brand span{font-size:11.5px;color:#c9c9de;letter-spacing:.04em}
+header nav{margin-left:auto;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+header nav a{color:#dcdce8;font-size:12.5px;font-weight:500;padding:6px 11px;border-radius:2px}
+header nav a:hover{color:#fff;background:rgba(255,255,255,.12);text-decoration:none}
+header nav a.cta{background:#fff;color:var(--navy);font-weight:700}
+header nav a.cta:hover{background:#e8e8f2;color:var(--navy)}
+
+/* ヒーロー */
+.hero{background:linear-gradient(180deg,var(--navy) 0%,var(--navy-soft) 100%);color:#fff;
+  padding:64px 0 58px;text-align:center}
+.hero .eyebrow{font-size:12px;letter-spacing:.3em;color:#a9a9cd;margin-bottom:16px}
+.hero h1{font-size:clamp(25px,4.6vw,40px);font-weight:900;line-height:1.5;margin-bottom:20px}
+.hero h1 .u{border-bottom:3px solid #fff;padding-bottom:2px}
+.hero p{font-size:15px;color:#dcdce8;max-width:730px;margin:0 auto 26px;line-height:2.05}
+.hero .prices{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:26px}
+.hero .pchip{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.28);
+  border-radius:3px;padding:11px 18px;font-size:13px;color:#fff;text-align:left}
+.hero .pchip b{display:block;font-size:20px;font-weight:900;letter-spacing:.02em}
+.hero .pchip span{color:#c9c9de;font-size:11.5px}
+.btn{display:inline-block;background:#fff;color:var(--navy);font-weight:700;font-size:15px;
+  padding:14px 34px;border-radius:3px;border:2px solid #fff}
+.btn:hover{background:transparent;color:#fff;text-decoration:none}
+.btn.navy{background:var(--navy);color:#fff;border-color:var(--navy)}
+.btn.navy:hover{background:#fff;color:var(--navy)}
+.btn.line{background:transparent;color:var(--navy);border-color:var(--navy)}
+.btn.line:hover{background:var(--navy);color:#fff}
+
+/* セクション */
+section.blk{padding:58px 0}
+section.blk.wash{background:var(--wash)}
+.shead{text-align:center;margin-bottom:38px}
+.shead .en{font-size:11.5px;letter-spacing:.3em;color:var(--sand);display:block;margin-bottom:7px}
+.shead h2{font-size:clamp(20px,3.2vw,29px);font-weight:900;color:var(--navy);line-height:1.5}
+.shead p{color:var(--muted);font-size:14px;margin-top:11px}
+
+.grid{display:grid;gap:18px}
+.g3{grid-template-columns:repeat(auto-fit,minmax(268px,1fr))}
+.g2{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:3px;padding:26px 24px}
+.card h3{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:9px;line-height:1.6}
+.card p{font-size:13.8px;color:var(--ink);line-height:1.95}
+.card .no{display:inline-block;background:var(--navy);color:#fff;font-size:12px;font-weight:700;
+  width:26px;height:26px;line-height:26px;text-align:center;border-radius:50%;margin-bottom:11px}
+
+/* 料金 */
+.plans{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));margin-bottom:22px}
+.plan{border:2px solid var(--line);border-radius:3px;padding:30px 26px;background:var(--paper);
+  display:flex;flex-direction:column}
+.plan.best{border-color:var(--navy)}
+.plan .tag{display:inline-block;align-self:flex-start;font-size:11px;font-weight:700;letter-spacing:.08em;
+  padding:3px 11px;border-radius:2px;background:var(--wash);color:var(--muted);margin-bottom:13px}
+.plan.best .tag{background:var(--navy);color:#fff}
+.plan h3{font-size:17px;font-weight:900;color:var(--navy);margin-bottom:6px;line-height:1.55}
+.plan .yen{font-size:36px;font-weight:900;color:var(--navy);line-height:1.25;margin:12px 0 2px}
+.plan .yen small{font-size:13px;font-weight:500;color:var(--muted);margin-left:6px}
+.plan .tax{font-size:12.5px;color:var(--muted);margin-bottom:16px}
+.plan ul{list-style:none;font-size:13.5px;flex:1;margin-bottom:20px}
+.plan li{padding-left:22px;position:relative;margin-bottom:9px;line-height:1.85}
+.plan li::before{content:"";position:absolute;left:2px;top:.72em;width:9px;height:5px;
+  border-left:2px solid var(--navy);border-bottom:2px solid var(--navy);transform:rotate(-45deg)}
+.plan li.no::before{border-color:var(--sand);transform:none;top:.95em;height:0;width:10px;border-left:0}
+.plan li.no{color:var(--muted)}
+
+table.spec{width:100%;border-collapse:collapse;font-size:13.8px;background:var(--paper)}
+table.spec th,table.spec td{border:1px solid var(--line);padding:12px 15px;text-align:left;vertical-align:top}
+table.spec th{background:var(--wash);color:var(--navy);font-weight:700;width:34%;white-space:nowrap}
+
+details.faq{border-bottom:1px solid var(--line);padding:17px 2px}
+details.faq summary{font-weight:700;color:var(--navy);cursor:pointer;font-size:14.5px;list-style:none;
+  display:flex;gap:11px;align-items:flex-start}
+details.faq summary::-webkit-details-marker{display:none}
+details.faq summary::before{content:"Q";flex:none;font-weight:900;color:var(--sand);font-size:13px;
+  line-height:1.7}
+details.faq p{font-size:13.8px;color:var(--ink);margin-top:11px;padding-left:24px;line-height:1.95}
+details.faq[open] summary{color:var(--accent)}
+
+.note{background:var(--wash2);border-left:4px solid var(--sand);padding:20px 24px;font-size:13.5px;
+  line-height:1.95;color:var(--ink)}
+.note b{color:var(--navy)}
+.oem{background:var(--paper);border:1px solid var(--line);border-radius:3px;padding:28px 26px}
+.oem h3{color:var(--navy);font-size:16px;font-weight:700;margin-bottom:10px}
+.oem p{font-size:13.8px;line-height:1.98}
+
+.cta-band{background:var(--navy);color:#fff;text-align:center;padding:52px 0}
+.cta-band h2{font-size:clamp(19px,2.9vw,26px);font-weight:900;margin-bottom:12px;line-height:1.55}
+.cta-band p{color:#c9c9de;font-size:14px;margin-bottom:24px}
+.cta-band .row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+footer.site{background:#15153f;color:#a9a9cd;font-size:12.5px;padding:34px 0 28px;text-align:center}
+footer.site a{color:#dcdce8}
+footer.site .co{color:#fff;font-weight:700;font-size:14px;margin-bottom:6px}
+footer.site .lnk{margin:14px 0 16px;display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+@media(max-width:640px){
+  .hero{padding:46px 0 42px}
+  section.blk{padding:44px 0}
+  .brand b{font-size:20px}
+}
+</style>
+</head>
+<body>
+
+<header class="site"><div class="wrap">
+  <a class="brand" href="/"><b>UCHINAI</b><span>システム開発 内製化支援</span></a>
+  <nav>
+    <a href="#flow">進め方</a>
+    <a href="#value">導入効果</a>
+    <a href="#price">料金</a>
+    <a href="#scope">対応範囲</a>
+    <a href="#faq">よくある質問</a>
+    <a class="cta" href="https://kurage.exbridge.jp/vibe-prototype.php?brand=uchinai">お申し込み</a>
+  </nav>
+</div></header>
+
+<div class="hero"><div class="wrap">
+  <p class="eyebrow">SYSTEM DEVELOPMENT IN-HOUSE</p>
+  <h1>そのシステム、<span class="u">自社で育てられる</span>形で<br>手に入れませんか。</h1>
+  <p>
+    UCHINAI は、システム開発の内製化を支援するサービスです。<br>
+    設計書をもとに動くプロトタイプを短期間で構築し、<b style="color:#fff">デモで実際に触って確かめてから</b>ご発注いただきます。
+    ソースコードはお客様の資産としてお渡しするため、納品後は社内で育てていけます。
+  </p>
+  <div class="prices">
+    <div class="pchip"><b>100,000円</b><span>スタンドアロン版（税別）</span></div>
+    <div class="pchip"><b>200,000円</b><span>設置・設定込み（税別）</span></div>
+  </div>
+  <a class="btn" href="#price">料金とお申し込み</a>
+</div></div>
+
+<section class="blk" id="flow"><div class="wrap">
+  <div class="shead">
+    <span class="en">FLOW</span>
+    <h2>ご依頼から納品まで</h2>
+    <p>先にお支払いいただくのではなく、動くものをご覧になってからお決めいただきます。</p>
+  </div>
+  <div class="grid g3">
+    <div class="card"><span class="no">1</span>
+      <h3>設計書をご用意</h3>
+      <p>作りたいものの画面・データ・処理の流れをまとめた設計書をお送りください。すでにお持ちのもので構いません。書き方のご相談も承ります。</p></div>
+    <div class="card"><span class="no">2</span>
+      <h3>プロトタイプを開発</h3>
+      <p>エンジニアが土台となる構成を設計し、その上に実装します。最短1営業日以内、繁忙期・長期休暇でなければ1週間以内にご提示します。</p></div>
+    <div class="card"><span class="no">3</span>
+      <h3>デモで試用</h3>
+      <p>デモ環境をご用意し、実際に操作していただきます。<b>この時点ではまだお支払いは発生しません。</b></p></div>
+    <div class="card"><span class="no">4</span>
+      <h3>ご発注・お支払い</h3>
+      <p>ご納得いただけましたらご発注へ。請求書を発行し、銀行振込またはPayPalでお支払いいただけます。</p></div>
+    <div class="card"><span class="no">5</span>
+      <h3>納品</h3>
+      <p>ソースコード一式をお客様のGitHubリポジトリへお渡しします。設置・設定込みのプランでは、お客様のサーバーへの導入まで行います。</p></div>
+    <div class="card"><span class="no">6</span>
+      <h3>社内で育てる</h3>
+      <p>設計された土台の上なら、AIコーディングツールを使った改修も的を外しにくくなります。社内のご担当者でも続けられます。</p></div>
+  </div>
+</div></section>
+
+<section class="blk wash" id="value"><div class="wrap">
+  <div class="shead">
+    <span class="en">VALUE</span>
+    <h2>「作ってもらう」から「自社で育てる」へ</h2>
+    <p>内製化とは、開発を全部自社でやることではありません。手を入れられる状態を持つことです。</p>
+  </div>
+  <div class="grid g2">
+    <div class="card">
+      <h3>土台の設計だけは人が行います</h3>
+      <p>AIに一から書かせると、動きはするものの後から手を入れられない作りになりがちです。データの持ち方や全体の構成をエンジニアが決めるため、あとから伸ばせます。</p></div>
+    <div class="card">
+      <h3>触ってからご判断いただけます</h3>
+      <p>デモを試用してからのご発注です。先に費用をお支払いいただいて「思っていたものと違う」という事態を避けられます。</p></div>
+    <div class="card">
+      <h3>要件のズレが早く見つかります</h3>
+      <p>動くものがあると、資料だけでは気づけなかった抜けや認識違いがすぐ表に出ます。手戻りが最も高くつくのは、作り込んだ後です。</p></div>
+    <div class="card">
+      <h3>ベンダーに縛られません</h3>
+      <p>ソースコードはお客様の手元に残ります。以降は自社でも、別の開発会社でも続けられます。</p></div>
+    <div class="card">
+      <h3>他社へ発注する場合にも効きます</h3>
+      <p>要件が動くもので固まっているぶん、開発会社との認識のズレが減ります。見積もりの根拠にもなり、結果として全体の費用を抑えられます。</p></div>
+    <div class="card">
+      <h3>社内の合意が取りやすくなります</h3>
+      <p>動く画面は、資料よりも伝わります。稟議や経営層へのご説明で、議論が具体的になります。</p></div>
+  </div>
+</div></section>
+
+<section class="blk" id="price"><div class="wrap">
+  <div class="shead">
+    <span class="en">PRICE</span>
+    <h2>料金</h2>
+    <p>ご依頼1回あたりの費用です。デモをご確認いただき、ご納得のうえでのお支払いとなります。</p>
+  </div>
+  <div class="plans">
+    <div class="plan">
+      <span class="tag">STANDALONE</span>
+      <h3>スタンドアロン版<br>（GitHubでの受け渡しのみ）</h3>
+      <p class="yen">100,000<small>円（税別）</small></p>
+      <p class="tax">税込 110,000円</p>
+      <ul>
+        <li>設計書に基づくプロトタイプの実装</li>
+        <li>デモ環境での試用</li>
+        <li>ソースコード一式のお渡し（GitHub）</li>
+        <li>納品後のカスタマイズは自由</li>
+        <li class="no">サーバーへの設置・設定は含みません</li>
+      </ul>
+      <a class="btn line" href="https://kurage.exbridge.jp/vibe-prototype.php?brand=uchinai&amp;plan=standalone">このプランで申し込む</a>
+    </div>
+    <div class="plan best">
+      <span class="tag">INSTALL</span>
+      <h3>設置・設定込み<br>（レンタルサーバーへ導入）</h3>
+      <p class="yen">200,000<small>円（税別）</small></p>
+      <p class="tax">税込 220,000円</p>
+      <ul>
+        <li>スタンドアロン版の内容すべて</li>
+        <li><b>お客様のレンタルサーバーへの設置</b></li>
+        <li><b>動作させるための初期設定</b></li>
+        <li>設置後の動作確認</li>
+        <li>そのまま社内でお使いいただけます</li>
+      </ul>
+      <a class="btn navy" href="https://kurage.exbridge.jp/vibe-prototype.php?brand=uchinai&amp;plan=install">このプランで申し込む</a>
+    </div>
+  </div>
+  <div class="note">
+    <b>お支払いについて。</b>ご発注時に請求書を発行いたします。銀行振込またはPayPalに対応しています。
+    デモをご確認いただく段階では費用は発生しません。<br>
+    <b>納品先。</b>ソースコードはお客様のGitHubリポジトリへお渡しします。GitHubアカウントをお持ちでない場合は、
+    お申し込み時にご相談ください。<br>
+    <b>対応範囲には条件があります。</b>下の「対応範囲」を必ずご確認のうえお申し込みください。
+  </div>
+</div></section>
+
+<section class="blk wash" id="scope"><div class="wrap">
+  <div class="shead">
+    <span class="en">SCOPE</span>
+    <h2>対応範囲</h2>
+    <p>短期間で土台をご用意するためのサービスです。あらかじめご確認ください。</p>
+  </div>
+  <table class="spec">
+    <tr><th>対応しないこと</th><td>
+      デザインの作り込みや細部のUI調整には対応していません。<br>
+      ご要望を伺いながら作り込む進め方はとっておらず、設計書に書かれた範囲を形にします。<br>
+      本番運用に向けた性能・セキュリティの作り込み、保守・運用は本サービスの範囲外です。
+    </td></tr>
+    <tr><th>前提</th><td>
+      単独で稼働するWebシステムを前提としています。他システムとの連携や、スマートフォンアプリなど
+      ブラウザ以外のデバイスへの対応は別途ご相談ください。<br>
+      設計書から画面・データ・処理の流れが読み取れることが条件です。読み取れない機能は未実装のまま納品します。<br>
+      納品にはお客様のGitHubアカウントが必要です。
+    </td></tr>
+    <tr><th>秘密保持</th><td>
+      納品物はオープンソースと同じ扱いとなり、当社および開発元も自由に利用・公開します。
+      公開されて差し支えない範囲で作ることを前提としてください。<br>
+      秘密保持が必要な案件は、<b>秘密保持オプション（有償・別途お見積り）</b>として承ります。
+    </td></tr>
+    <tr><th>権利の扱い</th><td>
+      納品するソースコードは <b>MIT License</b> で提供します。商用利用・再販・改変・再配布は自由で、
+      追加の許諾も費用も必要ありません。条件は著作権表示とライセンス条文を残すことだけです。<br>
+      AIを利用する性質上、他のお客様に類似の生成物が出ることがあり、独占性は保証しません。<br>
+      ライセンスの付与は入金確認後です。デモの段階では付与されていません。
+    </td></tr>
+    <tr><th>デモ環境</th><td>試用期間中のみご提供します。継続的な稼働環境ではありません。</td></tr>
+  </table>
+</div></section>
+
+<section class="blk"><div class="wrap">
+  <div class="shead">
+    <span class="en">ABOUT</span>
+    <h2>UCHINAI について</h2>
+  </div>
+  <div class="oem">
+    <h3>Kurage バイブプロトタイプ制作サービスのOEM提供です</h3>
+    <p>
+      UCHINAI は、株式会社エクスブリッジが開発・提供する
+      「Kurage バイブプロトタイプ制作サービス」を、<b>株式会社L.Zone がOEM提供するサービス</b>です。
+      開発の実務および技術的な裏付けは同サービスの仕組みに基づいており、ご依頼の受付・お客様とのやりとり・
+      ご請求は UCHINAI として行います。<br><br>
+      お申し込み画面は、システムの都合上 kurage.exbridge.jp のドメインで表示されます。
+      画面上は <b>「UCHINAI 注文登録」</b>と表示されますので、そのままお進みください。
+      請求書も UCHINAI のご依頼内容で発行されます。<br><br>
+      内製化の支援においては、動くものを早く用意することと、
+      納品後にお客様ご自身で手を入れられる状態にしておくことが要です。
+      その2点を満たす仕組みとして、実績のあるサービスを土台に採用しています。
+    </p>
+  </div>
+</div></section>
+
+<section class="blk wash" id="faq"><div class="wrap">
+  <div class="shead">
+    <span class="en">FAQ</span>
+    <h2>よくある質問</h2>
+  </div>
+  <details class="faq"><summary>自分で書いた設計書でも依頼できますか？</summary>
+    <p>はい。画面・データ・処理の流れが読み取れる記述レベルであれば承ります。判断がつかない場合は、まず設計書をお送りください。内容を拝見して、そのまま進められるかをお伝えします。</p></details>
+  <details class="faq"><summary>2つのプランはどちらを選べばよいですか？</summary>
+    <p>社内にサーバーを扱えるご担当者がいらっしゃる場合はスタンドアロン版（100,000円・税別）で十分です。設置作業までお任せになりたい場合、あるいは納品後すぐに社内でお使いになりたい場合は、設置・設定込み（200,000円・税別）をお選びください。</p></details>
+  <details class="faq"><summary>どのくらいで出来上がりますか？</summary>
+    <p>最短1営業日以内にデモをご確認いただけます。繁忙期や長期休暇でなければ1週間以内にはご提示します。ただし要件と設計書の記述レベルによって変わります。お送りいただいた内容を拝見して、目安をお伝えします。</p></details>
+  <details class="faq"><summary>納品物は何ですか？</summary>
+    <p>プロトタイプのソースコード一式です。お客様のGitHubリポジトリへ納品します。以降はお客様の資産として、カスタマイズや他社への引き継ぎに自由にお使いいただけます。</p></details>
+  <details class="faq"><summary>デザインの細かい調整もお願いできますか？</summary>
+    <p>本サービスでは対応していません。動く土台を短期間でご用意することが目的のため、デザインや細部の作り込みは、納品後にお客様側で進めていただく前提です。</p></details>
+  <details class="faq"><summary>そのまま本番で使えますか？</summary>
+    <p>プロトタイプとしてお渡しするものであり、本番運用に向けた性能・セキュリティの作り込みは含みません。本番化のご相談は別途承ります。</p></details>
+  <details class="faq"><summary>納品後の改修はどうすればよいですか？</summary>
+    <p>設計された土台が残るため、社内のご担当者やAIコーディングツールでの改修が進めやすくなります。ご要望があれば、改修のご相談も承ります。</p></details>
+</div></section>
+
+<div class="cta-band"><div class="wrap">
+  <h2>まずは設計書をお送りください。</h2>
+  <p>動くものをご覧いただいてから、ご発注をご判断いただけます。</p>
+  <div class="row">
+    <a class="btn" href="https://kurage.exbridge.jp/vibe-prototype.php?brand=uchinai">お申し込み・お見積り</a>
+    <a class="btn" style="background:transparent;color:#fff" href="https://www.l-zone.net/">株式会社L.Zone について</a>
+  </div>
+</div></div>
+
+<footer class="site"><div class="wrap">
+  <p class="co">株式会社 L.Zone</p>
+  <p>UCHINAI — システム開発内製化 支援サービス</p>
+  <p class="lnk">
+    <a href="https://www.l-zone.net/">コーポレートサイト</a>
+    <a href="https://kurage.exbridge.jp/vibe-prototype.php?brand=uchinai">お申し込み</a>
+    <a href="https://kurage.exbridge.jp/terms.html">利用規約</a>
+  </p>
+  <p>&copy; 株式会社 L.Zone All Rights Reserved.</p>
+</div></footer>
+
+</body>
+</html>
