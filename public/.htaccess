@@ -1,3 +1,8 @@
 # heteml の新規サブドメインは既定が PHP 5.6 のため明示する
 AddHandler php8.3-script .php
 DirectoryIndex index.html index.php
+
+# 文字コードをヘッダーで宣言する。付けないと Content-Type が
+# 「text/html」だけになり、受け取る側（Python requests など）が
+# ISO-8859-1 とみなして日本語が化ける（RFC 2616 の既定）
+AddDefaultCharset UTF-8
