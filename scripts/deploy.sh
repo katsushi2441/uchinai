@@ -13,6 +13,6 @@ upload() {
     "ftp://${FTP_USER}:${FTP_PASS}@${FTP_HOST}${remote}/${2}"
   echo "deployed: ${2}"
 }
-for f in index.html .htaccess robots.txt sitemap.xml; do upload "public/$f" "$f"; done
+for f in index.html .htaccess robots.txt sitemap.xml llms.txt; do upload "public/$f" "$f"; done
 echo
 echo "published: https://uchinai.exbridge.jp/"
